@@ -67,6 +67,7 @@
 - phpMyAdmin: 5.2.3
 
 ## ER図
+![ER図](docs/er.drawio.png)
 
 ## URL (開発環境)
 - お問合せフォーム画面: http://localhost/
