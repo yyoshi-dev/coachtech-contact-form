@@ -38,9 +38,6 @@
     DB_DATABASE=laravel_db
     DB_USERNAME=laravel_user
     DB_PASSWORD=laravel_pass
-
-    # セッション設定
-    SESSION_DRIVER=file
     ```
 
 5. アプリケーションキーを生成 (初回のみ)
