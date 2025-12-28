@@ -15,6 +15,15 @@ class ContactFactory extends Factory
      * @return array<string, mixed>
      */
 
+    // 名前を8文字以内に制限する関数
+    private function shortName(callable $fakerMethod)
+    {
+        do {
+            $name = $fakerMethod();
+        } while (mb_strlen($name) > 8);
+        return $name;
+    }
+
     public function definition(): array
     {
         // 性別を定義 (1:男性, 2:女性, 3:その他)
@@ -34,11 +43,11 @@ class ContactFactory extends Factory
             'category_id' => $categoryId,
             // 'first_name' => $this->faker->firstName(),
             'first_name' => match ($gender) {
-                1 => $this->faker->firstNameMale(),
-                2 => $this->faker->firstNameFemale(),
-                3 => $this->faker->firstName(),
+                1 => $this->shortName(fn() => $this->faker->firstNameMale()),
+                2 => $this->shortName(fn() => $this->faker->firstNameFemale()),
+                3 => $this->shortName(fn() => $this->faker->firstName()),
             },
-            'last_name' => $this->faker->lastName(),
+            'last_name' => $this->shortName(fn() => $this->faker->lastName()),
             'gender' => $gender,
             'email' => $this->faker->safeEmail(),
             'tel' => $this->faker->numerify('0##########'),
