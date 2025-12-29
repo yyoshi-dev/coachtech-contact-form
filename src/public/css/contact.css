@@ -9,7 +9,7 @@ Layout
 
 .form {
     margin: 0 auto;
-    width: 80%;
+    width: 70%;
     text-align: center;
 }
 
@@ -21,7 +21,7 @@ Form Group (共通)
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 
 .form__group-title {
@@ -127,7 +127,8 @@ Tel Field
 Error Message
 ========================= */
 .form__error {
-    height: 20px;
+    margin-top: 4px;
+    height: auto;
     color: #ff0000;
     text-align: left;
 }
@@ -156,7 +157,8 @@ Category (Select)
 ========================= */
 .category-field {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .form__input--select {
@@ -168,7 +170,8 @@ Category (Select)
     background: #F4F4F4;
     color: #9D8D7F;
     width: 100%;
-    padding: 10px;
+    height: 40px;
+    padding: 0 40px 0 10px;
     border: 1px solid #ddd;
     border-radius: 3px;
     appearance: none;
@@ -211,7 +214,7 @@ Button
     height: 30px;
     border: none;
     border-radius: 3px;
-    background: #9D8D7F;
+    background: #82746A;
     color: #fff;
     cursor: pointer;
 }

@@ -21,13 +21,13 @@
             </div>
             <div class="form__group-content name-field">
                 <div class="form__input--text">
-                    <input type="text" name="last_name" value="{{old('last_name')}}" placeholder="例: 山田">
+                    <input type="text" name="last_name" value="{{old('last_name', request('last_name'))}}" placeholder="例: 山田">
                     @error('last_name')
                         <p class="form__error">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="form__input--text">
-                    <input type="text" name="first_name" value="{{old('first_name')}}" placeholder="例: 太郎">
+                    <input type="text" name="first_name" value="{{old('first_name', request('first_name'))}}" placeholder="例: 太郎">
                     @error('first_name')
                         <p class="form__error">{{$message}}</p>
                     @enderror
@@ -44,19 +44,19 @@
                 <div class="gender-field">
                     <div class="form__radio">
                         <label>
-                            <input type="radio" name="gender" value="1" {{old('gender') == 1 ? 'checked' : ''}}>
+                            <input type="radio" name="gender" value="1" {{old('gender', request('gender')) == 1 ? 'checked' : ''}}>
                             男性
                         </label>
                     </div>
                     <div class="form__radio">
                         <label>
-                            <input type="radio" name="gender" value="2" {{old('gender') == 2 ? 'checked' : ''}}>
+                            <input type="radio" name="gender" value="2" {{old('gender', request('gender')) == 2 ? 'checked' : ''}}>
                             女性
                         </label>
                     </div>
                     <div class="form__radio">
                         <label>
-                            <input type="radio" name="gender" value="3" {{old('gender') == 3 ? 'checked' : ''}}>
+                            <input type="radio" name="gender" value="3" {{old('gender', request('gender')) == 3 ? 'checked' : ''}}>
                             その他
                         </label>
                     </div>
@@ -74,7 +74,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="email" name="email" value="{{old('email')}}" placeholder="例: test@example.com">
+                    <input type="email" name="email" value="{{old('email', request('email'))}}" placeholder="例: test@example.com">
                     @error('email')
                         <p class="form__error">{{$message}}</p>
                     @enderror
@@ -89,21 +89,21 @@
             </div>
             <div class="form__group-content tel-field">
                 <div class="form__input--text">
-                    <input type="text" name="tel1" value="{{old('tel1')}}" placeholder="080">
+                    <input type="text" name="tel1" value="{{old('tel1', request('tel1'))}}" placeholder="080">
                     @error('tel1')
                         <p class="form__error">{{$message}}</p>
                     @enderror
                 </div>
                 <span class="tel__hyphen">-</span>
                 <div class="form__input--text">
-                    <input type="text" name="tel2" value="{{old('tel2')}}" placeholder="1234">
+                    <input type="text" name="tel2" value="{{old('tel2', request('tel2'))}}" placeholder="1234">
                     @error('tel2')
                         <p class="form__error">{{$message}}</p>
                     @enderror
                 </div>
                 <span class="tel__hyphen">-</span>
                 <div class="form__input--text">
-                    <input type="text" name="tel3" value="{{old('tel3')}}" placeholder="5678">
+                    <input type="text" name="tel3" value="{{old('tel3', request('tel3'))}}" placeholder="5678">
                     @error('tel3')
                         <p class="form__error">{{$message}}</p>
                     @enderror
@@ -118,7 +118,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address" value="{{old('address')}}" placeholder="例: 東京都渋谷区千駄ヶ谷1-2-3">
+                    <input type="text" name="address" value="{{old('address', request('address'))}}" placeholder="例: 東京都渋谷区千駄ヶ谷1-2-3">
                     @error('address')
                         <p class="form__error">{{$message}}</p>
                     @enderror
@@ -133,7 +133,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="building" value="{{old('building')}}" placeholder="例: 千駄ヶ谷マンション101">
+                    <input type="text" name="building" value="{{old('building', request('building'))}}" placeholder="例: 千駄ヶ谷マンション101">
                     @error('building')
                         <p class="form__error">{{$message}}</p>
                     @enderror
@@ -150,26 +150,16 @@
                 <div class="form__input--select">
                     <select name="category_id">
                         <option value="" disabled selected>選択してください</option>
-                        {{-- categoriesサンプル 後で削除 --}}
-                        @php
-                            $categories = [
-                                (object)['id'=>1, 'name'=>'商品のお届けについて'],
-                                (object)['id'=>2, 'name'=>'商品の交換について'],
-                                (object)['id'=>3, 'name'=>'商品トラブル'],
-                                (object)['id'=>4, 'name'=>'ショップへのお問い合わせ'],
-                                (object)['id'=>5, 'name'=>'その他'],
-                            ]
-                        @endphp
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                                {{$category->name}}
+                            <option value="{{$category->id}}" {{ old('category_id', request('category_id')) == $category->id ? 'selected' : '' }}>
+                                {{$category->content}}
                             </option>
                         @endforeach
                     </select>
-                    @error('category_id')
-                        <p class="form__error">{{$message}}</p>
-                    @enderror
                 </div>
+                @error('category_id')
+                    <p class="form__error">{{$message}}</p>
+                @enderror
             </div>
         </div>
         {{-- お問い合わせ内容 --}}
@@ -180,7 +170,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--textarea">
-                    <textarea name="detail" placeholder="お問い合わせ内容をご記載ください">{{ old('detail') }}</textarea>
+                    <textarea name="detail" placeholder="お問い合わせ内容をご記載ください">{{ old('detail', request('detail')) }}</textarea>
                     @error('detail')
                         <p class="form__error">{{$message}}</p>
                     @enderror
