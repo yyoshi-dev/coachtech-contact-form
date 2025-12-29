@@ -1,3 +1,6 @@
+/* =========================
+Layout
+========================= */
 .content {
     margin: 0 auto;
     padding: 15px 15px;
@@ -10,6 +13,10 @@
     text-align: center;
 }
 
+
+/* =========================
+Form Group (共通)
+========================= */
 .form__group {
     display: flex;
     justify-content: space-between;
@@ -22,6 +29,14 @@
     text-align: left;
 }
 
+.form__group-content {
+    width: 70%;
+}
+
+
+/* =========================
+Labels
+========================= */
 .form__label--item {
     color: #9D8D7F;
     font-weight: bold;
@@ -35,13 +50,12 @@
     ;
 }
 
-.form__group-content {
-    width: 70%;
-}
 
+/* =========================
+Name Fields
+========================= */
 .name-fields {
     display: flex;
-    width: 70%;
     gap: 50px;
 }
 
@@ -53,6 +67,10 @@
     width: 100%;
 }
 
+
+/* =========================
+Gender (Radio)
+========================= */
 .gender-field {
     display: flex;
     align-items: center;
@@ -89,6 +107,10 @@
     transform: translate(-50%, -50%);
 }
 
+
+/* =========================
+Tel Fields
+========================= */
 .tel-fields {
     display: flex;
     justify-content: space-between;
@@ -100,12 +122,20 @@
     text-align: center;
 }
 
+
+/* =========================
+Error Message
+========================= */
 .form__error {
     height: 20px;
     color: #ff0000;
     text-align: left;
 }
 
+
+/* =========================
+Input (Text / Textarea)
+========================= */
 .form__input--text input,
 .form__input--textarea textarea {
     background: #F4F4F4;
@@ -114,13 +144,16 @@
     width: 100%;
     border: 1px solid #ddd;
     border-radius: 3px;
-    appearance: none;
 }
 
 .form__input--text input {
     height: 40px;
 }
 
+
+/* =========================
+Category (Select)
+========================= */
 .category-fields {
     display: flex;
     justify-content: flex-start;
@@ -152,6 +185,10 @@
     font-size: 15px;
 }
 
+
+/* =========================
+Textarea
+========================= */
 .form__input--textarea textarea {
     height: 120px;
 }
@@ -160,6 +197,10 @@
     align-items: flex-start;
 }
 
+
+/* =========================
+Button
+========================= */
 .form__button {
     margin-top: 30px;
 }
