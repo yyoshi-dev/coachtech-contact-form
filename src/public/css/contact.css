@@ -52,24 +52,24 @@ Labels
 
 
 /* =========================
-Name Fields
+Name Field
 ========================= */
-.name-fields {
+.name-field {
     display: flex;
     gap: 50px;
 }
 
-.name-fields .form__input--text {
+.name-field .form__input--text {
     width: 50%;
 }
 
-.name-fields .form__input--text input {
+.name-field .form__input--text input {
     width: 100%;
 }
 
 
 /* =========================
-Gender (Radio)
+Gender Field
 ========================= */
 .gender-field {
     display: flex;
@@ -109,16 +109,16 @@ Gender (Radio)
 
 
 /* =========================
-Tel Fields
+Tel Field
 ========================= */
-.tel-fields {
+.tel-field {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
 
-.tel-fields .form__input--text input {
+.tel-field .form__input--text input {
     text-align: center;
 }
 
@@ -154,7 +154,7 @@ Input (Text / Textarea)
 /* =========================
 Category (Select)
 ========================= */
-.category-fields {
+.category-field {
     display: flex;
     justify-content: flex-start;
 }

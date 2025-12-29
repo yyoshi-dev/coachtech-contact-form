@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="content">
-    <form action="/confirm" method="post" class="form">
+    <form action="/confirm" method="post" class="form" novalidate>
         @csrf
         {{-- お名前 --}}
         <div class="form__group">
@@ -19,7 +19,7 @@
                 <span class="form__label--item">お名前</span>
                 <span class="form__label--required">※</span>
             </div>
-            <div class="form__group-content name-fields">
+            <div class="form__group-content name-field">
                 <div class="form__input--text">
                     <input type="text" name="last_name" value="{{old('last_name')}}" placeholder="例: 山田">
                     @error('last_name')
@@ -40,24 +40,26 @@
                 <span class="form__label--item">性別</span>
                 <span class="form__label--required">※</span>
             </div>
-            <div class="form__group-content gender-field">
-                <div class="form__radio">
-                    <label>
-                        <input type="radio" name="gender" value="1" {{old('gender') == 1 ? 'checked' : ''}}>
-                        男性
-                    </label>
-                </div>
-                <div class="form__radio">
-                    <label>
-                        <input type="radio" name="gender" value="2" {{old('gender') == 2 ? 'checked' : ''}}>
-                        女性
-                    </label>
-                </div>
-                <div class="form__radio">
-                    <label>
-                        <input type="radio" name="gender" value="3" {{old('gender') == 3 ? 'checked' : ''}}>
-                        その他
-                    </label>
+            <div class="form__group-content">
+                <div class="gender-field">
+                    <div class="form__radio">
+                        <label>
+                            <input type="radio" name="gender" value="1" {{old('gender') == 1 ? 'checked' : ''}}>
+                            男性
+                        </label>
+                    </div>
+                    <div class="form__radio">
+                        <label>
+                            <input type="radio" name="gender" value="2" {{old('gender') == 2 ? 'checked' : ''}}>
+                            女性
+                        </label>
+                    </div>
+                    <div class="form__radio">
+                        <label>
+                            <input type="radio" name="gender" value="3" {{old('gender') == 3 ? 'checked' : ''}}>
+                            その他
+                        </label>
+                    </div>
                 </div>
                 @error('gender')
                     <p class="form__error">{{$message}}</p>
@@ -85,21 +87,27 @@
                 <span class="form__label--item">電話番号</span>
                 <span class="form__label--required">※</span>
             </div>
-            <div class="form__group-content tel-fields">
+            <div class="form__group-content tel-field">
                 <div class="form__input--text">
                     <input type="text" name="tel1" value="{{old('tel1')}}" placeholder="080">
+                    @error('tel1')
+                        <p class="form__error">{{$message}}</p>
+                    @enderror
                 </div>
                 <span class="tel__hyphen">-</span>
                 <div class="form__input--text">
                     <input type="text" name="tel2" value="{{old('tel2')}}" placeholder="1234">
+                    @error('tel2')
+                        <p class="form__error">{{$message}}</p>
+                    @enderror
                 </div>
                 <span class="tel__hyphen">-</span>
                 <div class="form__input--text">
                     <input type="text" name="tel3" value="{{old('tel3')}}" placeholder="5678">
+                    @error('tel3')
+                        <p class="form__error">{{$message}}</p>
+                    @enderror
                 </div>
-                @error('tel')
-                    <p class="form__error">{{$message}}</p>
-                @enderror
             </div>
         </div>
         {{-- 住所 --}}
@@ -138,7 +146,7 @@
                 <span class="form__label--item">お問い合わせの種類</span>
                 <span class="form__label--required">※</span>
             </div>
-            <div class="form__group-content category-fields">
+            <div class="form__group-content category-field">
                 <div class="form__input--select">
                     <select name="category_id">
                         <option value="" disabled selected>選択してください</option>
