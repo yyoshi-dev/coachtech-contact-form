@@ -1,0 +1,47 @@
+.header {
+    background: #fff;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 15px;
+    max-width: 1230px;
+    border-bottom: 3px solid #F4F4F4;
+}
+
+.header__left,
+.header__center,
+.header__right {
+    flex: 1;
+}
+
+.header__center {
+    text-align: center;
+}
+
+.header__right {
+    text-align: right;
+}
+
+.header__logo {
+    color: #9D8D7F;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 28px;
+    font-family: Georgia;
+}
+
+.page-title {
+    margin: 0 auto;
+    padding: 20px 15px;
+    max-width: 1230px;
+}
+
+.page-title__header{
+    color: #9D8D7F;
+    text-align: center;
+    font-family: Georgia;
+    margin: 5px 10px;
+}
