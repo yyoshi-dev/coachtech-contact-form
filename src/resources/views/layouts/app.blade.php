@@ -13,16 +13,20 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <div class="header__utilities">
-                <a href="/" class="header__log">FashionablyLate</a>
+            <div class="header__left"></div>
+            <div class="header__center">
+                <a href="/" class="header__logo">FashionablyLate</a>
             </div>
-            <nav class="header__nav">
+            <div class="header__right">
                 @yield('header-nav')
-            </nav>
+            </div>
         </div>
     </header>
 
     <main>
+        <div class="page-title">
+            <h2 class="page-title__header">@yield('title')</h2>
+        </div>
         @yield('content')
     </main>
 </body>
