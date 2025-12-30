@@ -3,16 +3,20 @@
 namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
-use App\Actions\Fortify\ResetUserPassword;
-use App\Actions\Fortify\UpdateUserPassword;
-use App\Actions\Fortify\UpdateUserProfileInformation;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Fortify;
+
+use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
+use App\Http\Requests\LoginRequest as AppLoginRequest;
+
+use Laravel\Fortify\Contracts\LogoutResponse as LogoutResponseContract;
+use App\Actions\Fortify\LogoutResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -21,7 +25,10 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // FortifyのLoginRequestを自作のものに置き換え
+        $this->app->bind(FortifyLoginRequest::class, AppLoginRequest::class);
+        // Logout処理時に"/login"にリダイレクトする設定に置き換え
+        $this->app->singleton(LogoutResponseContract::class, LogoutResponse::class);
     }
 
     /**
@@ -29,17 +36,28 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Fortify::createUsersUsing(CreateNewUser::class);
-        // Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
-        // Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
-        // Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
-        // Fortify::redirectUserForTwoFactorAuthenticationUsing(RedirectIfTwoFactorAuthenticatable::class);
-        // 登録及びログインビューの紐付けの追加
+        // Register View
         Fortify::registerView(function () {
             return view('auth.register');
         });
+
+        // Login View
         Fortify::loginView(function () {
             return view('auth.login');
+        });
+
+        // Register (ユーザー作成)
+        Fortify::createUsersUsing(CreateNewUser::class);
+
+        // ログイン認証
+        Fortify::authenticateUsing(function ($request) {
+            if (Auth::attempt([
+                'email' => $request->email,
+                'password' => $request->password
+            ])) {
+                return Auth::user();
+            }
+            throw ValidationException::withMessages(['password' => ['ログイン情報が登録されていません'],]);
         });
 
         RateLimiter::for('login', function (Request $request) {
@@ -47,9 +65,5 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(5)->by($throttleKey);
         });
-
-        // RateLimiter::for('two-factor', function (Request $request) {
-        //     return Limit::perMinute(5)->by($request->session()->get('login.id'));
-        // });
     }
 }
