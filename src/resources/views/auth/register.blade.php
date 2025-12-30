@@ -6,7 +6,7 @@
 
 @section('header-nav')
 <div class="login__link">
-        <a href="/login" class="login__button-submit">login</a>
+    <a href="/login" class="login__button-submit">login</a>
 </div>
 @endsection
 
