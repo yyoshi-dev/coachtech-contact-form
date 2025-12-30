@@ -5,9 +5,6 @@ Header, Title
     background: #F1ECE6;
 }
 
-.register__link,
-.login__link {}
-
 .register__button-submit,
 .login__button-submit {
     text-decoration: none;
