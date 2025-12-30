@@ -59,6 +59,7 @@
 ## 使用技術 (実行環境)
 - PHP：8.4.16
 - Laravel: 12.44.0
+- laravel/fortify: 1.33.0
 - MySQL: 8.0.40
 - nginx: 1.27.2
 - phpMyAdmin: 5.2.3
