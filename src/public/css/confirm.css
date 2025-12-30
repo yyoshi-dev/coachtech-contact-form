@@ -16,14 +16,11 @@ Layout
 /* =========================
 Table
 ========================= */
-.confirm-table {}
 
 .confirm-table__inner {
     width: 100%;
     border-collapse: collapse;
 }
-
-.confirm-table__row {}
 
 .confirm-table__header {
     padding: 20px 40px;

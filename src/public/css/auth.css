@@ -1,0 +1,102 @@
+/* =========================
+Header, Title
+========================= */
+.page-title {
+    background: #F1ECE6;
+}
+
+.register__link,
+.login__link {}
+
+.register__button-submit,
+.login__button-submit {
+    text-decoration: none;
+    border: 1px solid #9d8d7f62;
+    border-radius: 3px;
+    background: #F4F4F4;
+    color: #9D8D7F;
+    padding: 1px 20px;
+    font-size: 14px;
+}
+
+/* =========================
+Layout
+========================= */
+.content {
+    margin: 0 auto;
+    padding: 20px 15px 80px;
+    max-width: 1230px;
+    background: #F1ECE6;
+}
+
+.form {
+    margin: 0 auto;
+    padding: 30px 80px;
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+    background: #FFFFFF;
+    border: 1px solid #9d8d7f62;
+    border-radius: 3px;
+}
+
+/* =========================
+Form Group
+========================= */
+.form__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.form__group-title {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.form__group-content {
+    width: 100%;
+}
+
+.form__label-item {
+    color: #9D8D7F;
+    font-weight: bold;
+}
+
+.form__input--text input {
+    background: #F4F4F4;
+    color: #9D8D7F;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+}
+
+/* =========================
+Error Message
+========================= */
+.form__error {
+    margin-top: 4px;
+    height: auto;
+    color: #ff0000;
+    text-align: left;
+}
+
+/* =========================
+Button
+========================= */
+.form__button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.form__button-submit {
+    display: inline-block;
+    min-width: 100px;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 1px;
+    background: #82746A;
+    color: #fff;
+    cursor: pointer;
+}
