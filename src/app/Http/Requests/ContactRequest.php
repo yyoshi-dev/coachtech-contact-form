@@ -41,7 +41,7 @@ class ContactRequest extends FormRequest
             'last_name.required' => '姓を入力してください',
             'gender.required' => '性別を選択してください',
             'email.required' => 'メールアドレスを入力してください',
-            'email.email' => 'メールアドレスをメール形式で入力してください',
+            'email.email' => 'メールアドレスはメール形式で入力してください',
             'tel1.required' => '電話番号を入力してください',
             'tel1.regex' => '電話番号は半角英数字で入力してください',
             'tel1.max' => '電話番号は5桁まで数字で入力してください',
