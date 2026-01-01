@@ -16,5 +16,78 @@
 @section('title', 'Admin')
 
 @section('content')
+<div class="content">
+    {{-- 検索パート --}}
+    <div class="search">
+        <form action="/search" method="get" class="search-form">
+            <div class="search-form__content">
+                <div class="search-form__item">
+                    <input type="text" name="name_or_email" class="search-form__item-input" placeholder="名前やメールアドレスを入力してください"> {{-- 後で修正必須--}}
+                </div>
+                <div class="search-form__item">
+                    <select name="gender" class="search-form__item-select">
+                        <option value="" disabled selected>性別</option>
+                        <option value="1">男性</option>
+                        <option value="2">女性</option>
+                        <option value="3">その他</option>
+                    </select>
+                </div>
+                <div class="search-form__item">
+                    <select name="category_id" class="search-form__item-select">
+                        <option value="" disabled selected>お問い合わせの種類</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">
+                                {{$category->content}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="search-form__item">
+                    <input type="date" name="date" class="search-form__item-input" placeholder="年/月/日"> {{-- 後で修正必須--}}
+                </div>
+                <div class="search-form__button">
+                    <button class="search-form__button-submit" type="submit">検索</button>
+                </div>
+                <div class="search-form__button">
+                    <button class="search-form__button-reset" type="reset">リセット</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {{-- エクスポート、ページネーション --}}
+    <div class="utilities">
+        <form action="/export" method="get" class="export-form">
+            <button class="export-form__submit">エクスポート</button>
+        </form>
+        <div class="pagination">
+            {{$contacts->links()}}
+        </div>
+    </div>
+
+    {{-- お問い合わせ内容一覧 --}}
+    <div class="contact-table">
+        <table class="contact-table__inner">
+            <tr class="contact-table__row">
+                <th class="contact-table__header">お名前</th>
+                <th class="contact-table__header">性別</th>
+                <th class="contact-table__header">メールアドレス</th>
+                <th class="contact-table__header">お問い合わせの種類</th>
+                <th class="contact-table__header"></th>
+            </tr>
+            @foreach ($contacts as $contact)
+                <tr class="contact-table__row">
+                    <td class="contact-table__item">{{$contact->full_name}}</td>
+                    <td class="contact-table__item">{{$contact->gender_label}}</td>
+                    <td class="contact-table__item">{{$contact->email}}</td>
+                    <td class="contact-table__item">{{$contact->category->content}}</td>
+                    <td class="contact-table__item">
+                        {{-- 詳細ボタンを実装 --}}
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
+</div>
 
 @endsection

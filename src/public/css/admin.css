@@ -1,0 +1,198 @@
+/* =========================
+Header
+========================= */
+.logout-form__button {
+    text-decoration: none;
+    border: 1px solid #82746A62;
+    border-radius: 3px;
+    background: #F4F4F4;
+    color: #82746A;
+    padding: 1px 20px;
+    font-size: 14px;
+}
+
+/* =========================
+Layout
+========================= */
+.content {
+    margin: 0 auto;
+    padding: 20px 15px 80px;
+    max-width: 1230px;
+}
+
+/* =========================
+Search
+========================= */
+.search {
+    padding: 10px 20px;
+    background: #FFFFFF;
+}
+
+.search-form__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-form__item-input,
+.search-form__item-select {
+    padding: 8px 12px;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #F4F4F4;
+    color: #82746A;
+    text-align: center;
+    font-size: 10px;
+}
+
+.search-form__item-input {}
+
+.search-form__item-select {}
+
+.search-form__button {
+    text-align: center;
+}
+
+.search-form__button-submit,
+.search-form__button-reset {
+    display: inline-block;
+    margin: 0;
+    min-width: 80px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 1px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-form__button-submit {
+    background: #82746A;
+}
+
+.search-form__button-reset {
+    background: #D9C6B5;
+}
+
+
+
+/* =========================
+Utility
+========================= */
+.utilities {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.export-form__submit {
+    display: inline-block;
+    margin: 0;
+    min-width: 80px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 1px;
+    background: #EDEAE6;
+    color: #82746A;
+    cursor: pointer;
+}
+
+
+/* 全体を横並び・中央寄せにする */
+.pagination nav>div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+/* ページ番号の見た目をシンプルにする */
+.pagination a,
+.pagination span[aria-current="page"]>span {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 1px;
+    background: #fff;
+    color: #82746A;
+    font-size: 10px;
+    text-decoration: none;
+}
+.pagination span[aria-current="page"]>span {
+    background: #82746A;
+    color: #FFFFFF;
+}
+/* SVG の色を統一 */
+.pagination svg {
+    width: 14px;
+    height: 14px;
+    color: #82746A;
+}
+/* Showing XXX削除 */
+.pagination p.text-sm.text-gray-700.leading-5 {
+    display: none;
+}
+/* Previous削除 */
+.pagination .sm\:hidden span.cursor-not-allowed {
+    display: none !important;
+}
+/* Next削除 */
+.pagination .sm\:hidden a[rel="next"] {
+    display: none !important;
+}
+
+/* =========================
+Table
+========================= */
+.contact-table {
+    padding: 10px 20px;
+}
+
+.contact-table__inner {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.contact-table__header {
+    padding: 10px 30px;
+    border-bottom: 1px solid #ddd;
+    background: #82746A;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.contact-table__item {
+    padding: 10px 30px;
+    border-bottom: 1px solid #ddd;
+    color: #82746A;
+    text-align: left;
+}
+
+.contact-table__item:first-child {
+    border-left: 1px solid #ddd;
+}
+
+.contact-table__item:last-child {
+    border-right: 1px solid #ddd;
+}
+
+/* hover機能 */
+.contact-table__inner:has(td:nth-child(1):hover) th:nth-child(1),
+.contact-table__inner:has(td:nth-child(1):hover) td:nth-child(1) {
+    background-color: #D9C6B5;
+}
+.contact-table__inner:has(td:nth-child(2):hover) th:nth-child(2),
+.contact-table__inner:has(td:nth-child(2):hover) td:nth-child(2) {
+    background-color: #D9C6B5;
+}
+.contact-table__inner:has(td:nth-child(3):hover) th:nth-child(3),
+.contact-table__inner:has(td:nth-child(3):hover) td:nth-child(3) {
+    background-color: #D9C6B5;
+}
+
+.contact-table__inner:has(td:nth-child(4):hover) th:nth-child(4),
+.contact-table__inner:has(td:nth-child(4):hover) td:nth-child(4) {
+    background-color: #D9C6B5;
+}
+.contact-table__inner:has(td:nth-child(5):hover) th:nth-child(6),
+.contact-table__inner:has(td:nth-child(5):hover) td:nth-child(6) {
+    background-color: #D9C6B5;
+}
