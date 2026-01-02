@@ -1,0 +1,28 @@
+/* =========================
+Color Variables（全ページ共通の色）
+========================= */
+:root {
+    --color-main: #8C7868; /* メインカラー */
+    --color-sub: #BAA899; /* サブカラー */
+    --color-bg-light: #F4F4F4; /* 入力欄の背景 */
+    --color-bg-white: #FFFFFF; /* 白背景 */
+    --color-border: #ddd; /* 枠線 */
+    --color-error: #ff0000; /* エラー文字 */
+}
+
+/* =========================
+Typography (フォント)
+========================= */
+/* フォントのインポート */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Noto Sans JP',
+        'Hiragino Kaku Gothic ProN',
+        'Hiragino Sans',
+        'Meiryo',
+        sans-serif;
+    color: var(--color-main);
+    background: var(--color-bg-white);
+    margin: 0;
+}

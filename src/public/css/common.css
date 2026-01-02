@@ -1,5 +1,8 @@
+/* フォントのインポート */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap');
+
 .header {
-    background: #fff;
+    background: var(--color-bg-white);
 }
 
 .header__inner {
@@ -8,7 +11,7 @@
     margin: 0 auto;
     padding: 20px 15px;
     max-width: 1230px;
-    border-bottom: 3px solid #F4F4F4;
+    border-bottom: 3px solid var(--color-bg-light);
 }
 
 .header__left,
@@ -26,11 +29,11 @@
 }
 
 .header__logo {
-    color: #9D8D7F;
+    color: var(--color-main);
     text-decoration: none;
     font-weight: bold;
     font-size: 28px;
-    font-family: Georgia;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
 }
 
 .page-title {
@@ -40,8 +43,8 @@
 }
 
 .page-title__header{
-    color: #9D8D7F;
+    color: var(--color-main);
     text-align: center;
-    font-family: Georgia;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
     margin: 5px 10px;
 }

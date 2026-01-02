@@ -5,8 +5,8 @@
 @endsection
 
 @section('header-nav')
-<div class="login__link">
-    <a href="/login" class="login__button-submit">login</a>
+<div class="login__switch">
+    <a href="/login" class="login__switch-button">login</a>
 </div>
 @endsection
 

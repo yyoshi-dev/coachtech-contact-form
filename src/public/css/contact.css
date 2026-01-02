@@ -3,8 +3,8 @@ Layout
 ========================= */
 .content {
     margin: 0 auto;
-    padding: 15px 15px;
     max-width: 1230px;
+    padding: 20px 15px 80px;
 }
 
 .form {
@@ -21,7 +21,7 @@ Form Group (共通)
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .form__group-title {
@@ -38,8 +38,8 @@ Form Group (共通)
 Labels
 ========================= */
 .form__label--item {
-    color: #9D8D7F;
-    font-weight: bold;
+    color: var(--color-main);
+    /* font-weight: bold; */
 }
 
 .form__label--required {
@@ -47,7 +47,6 @@ Labels
     border-radius: 3px;
     color: #ff0000;
     font-weight: bold;
-    ;
 }
 
 
@@ -81,7 +80,7 @@ Gender Field
     display: flex;
     align-items: center;
     gap: 4px;
-    color: #9D8D7F;
+    color: var(--color-main);
 }
 
 .form__radio input[type="radio"] {
@@ -89,7 +88,7 @@ Gender Field
     -webkit-appearance: none;
     width: 18px;
     height: 18px;
-    border: 2px solid #9D8D7F;
+    border: 2px solid var(--color-main);
     border-radius: 50%;
     position: relative;
     vertical-align: middle;
@@ -102,7 +101,7 @@ Gender Field
     left: 50%;
     width: 18px;
     height: 18px;
-    background: #9D8D7F;
+    background: var(--color-main);
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
@@ -129,7 +128,7 @@ Error Message
 .form__error {
     margin-top: 4px;
     height: auto;
-    color: #ff0000;
+    color: var(--color-error);
     text-align: left;
 }
 
@@ -139,11 +138,11 @@ Input (Text / Textarea)
 ========================= */
 .form__input--text input,
 .form__input--textarea textarea {
-    background: #F4F4F4;
-    color: #9D8D7F;
+    background: var(--color-bg-light);
+    color: var(--color-main);
     padding: 10px;
     width: 100%;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 3px;
 }
 
@@ -151,6 +150,29 @@ Input (Text / Textarea)
     height: 40px;
 }
 
+.form__input--text input,
+.form__input--textarea textarea,
+.form__input--select select {
+    font-family: 'Noto Sans JP',
+        'Hiragino Kaku Gothic ProN',
+        'Hiragino Sans',
+        'Meiryo',
+        sans-serif;
+    ;
+    font-size: 14px;
+}
+
+.form__input--text input::placeholder,
+.form__input--textarea textarea::placeholder {
+    font-family: 'Noto Sans JP',
+        'Hiragino Kaku Gothic ProN',
+        'Hiragino Sans',
+        'Meiryo',
+        sans-serif;
+    font-size: 14px;
+    opacity: 0.6;
+    color: var(--color-main);
+}
 
 /* =========================
 Category (Select)
@@ -167,12 +189,13 @@ Category (Select)
 }
 
 .form__input--select select {
-    background: #F4F4F4;
-    color: #9D8D7F;
+    background: var(--color-bg-light);
+    color: var(--color-main);
+    opacity: 0.6;
     width: 100%;
     height: 40px;
     padding: 0 40px 0 10px;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 3px;
     appearance: none;
 }
@@ -184,8 +207,13 @@ Category (Select)
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: #9D8D7F;
+    color: var(--color-main);
+    opacity: 0.6;
     font-size: 15px;
+}
+
+.form__input--select select:has(option[value]:checked:not([value=""])) {
+    opacity: 1;
 }
 
 
@@ -194,27 +222,28 @@ Textarea
 ========================= */
 .form__input--textarea textarea {
     height: 120px;
+    resize: none;
 }
 
 .form__group--textarea {
     align-items: flex-start;
 }
 
-
 /* =========================
 Button
 ========================= */
 .form__button {
     margin-top: 30px;
+    text-align: center;
 }
 
 .form__button-submit {
-    padding: 5px;
-    width: 15%;
-    height: 30px;
+    display: inline-block;
+    min-width: 120px;
+    padding: 8px 24px;
     border: none;
-    border-radius: 3px;
-    background: #82746A;
+    border-radius: 1px;
+    background: var(--color-main);
     color: #fff;
     cursor: pointer;
 }
