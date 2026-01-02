@@ -19,7 +19,10 @@ class AdminController extends Controller
     // 検索処理
     public function search(Request $request)
     {
-        $contacts = Contact::adminSearch($request)->paginate(7);
+        if ($request->path() !== 'search') {
+            return redirect('/search?' . http_build_query($request->query()));
+        }
+        $contacts = Contact::adminSearch($request)->paginate(7)->withQueryString();
         $categories = Category::all();
         return view('admin.index', compact('contacts', 'categories'));
     }

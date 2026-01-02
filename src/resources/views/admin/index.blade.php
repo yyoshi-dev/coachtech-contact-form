@@ -63,8 +63,8 @@
             @endforeach
             <button class="export-form__submit">エクスポート</button>
         </form>
-        <div class="pagination">
-            {{$contacts->links()}}
+        <div class="admin-pagination">
+            {{$contacts->links('vendor.pagination.tailwind')}}
         </div>
     </div>
 

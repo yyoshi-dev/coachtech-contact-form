@@ -36,6 +36,7 @@ Search
     flex-wrap: nowrap;
 }
 
+/* 入力・セレクト共通 */
 .search-form__item-input,
 .search-form__item-select {
     padding: 10px 12px;
@@ -45,6 +46,12 @@ Search
     background: #F4F4F4;
     color: #82746A;
     text-align: center;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding-right: 32px;
 }
 
 .search-form__item-input[type='text'] {
@@ -55,6 +62,7 @@ Search
     position: relative;
 }
 
+/* セレクト / 日付入力の ▼ アイコン */
 .search-form__item:has(select)::after,
 .search-form__item:has(input[type="date"])::after {
     content: "▼";
@@ -64,15 +72,6 @@ Search
     transform: translateY(-50%);
     color: #9D8D7F;
     pointer-events: none;
-}
-
-.search-form__item-input,
-.search-form__item-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 100%;
-    padding-right: 32px;
 }
 
 .search-form__button {
@@ -99,8 +98,6 @@ Search
     background: #D9C6B5;
 }
 
-
-
 /* =========================
 Utility
 ========================= */
@@ -109,6 +106,11 @@ Utility
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* ページネーションラッパ（位置調整用・必要なら） */
+.admin-pagination {
+    /* 例: text-align: right; など必要ならここに */
 }
 
 .export-form__submit {
@@ -123,54 +125,50 @@ Utility
     cursor: pointer;
 }
 
+/* =========================
+Pagination
+========================= */
 
-/* ページネーション全体を横並びに */
-.pagination nav>div:last-child {
+/* コンポーネント本体（nav.pagination > div） */
+.pagination>div {
     display: flex;
     align-items: center;
-    gap: 6px;
 }
 
-/* 通常のページ番号 */
+/* ページ番号・＜＞共通スタイル */
 .pagination a,
-.pagination span[aria-current="page"]>span,
-.pagination span[aria-disabled="true"]>span {
-    display: inline-flex;
+.pagination span {
+    display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 28px;
+    width: 28px;
     height: 28px;
     border: 1px solid #ccc;
     border-radius: 1px;
-    padding: 0 6px;
     background: #fff;
     color: #82746A;
     font-size: 10px;
     text-decoration: none;
+    margin-left: -1px;
+    /* 枠線を重ねて隙間ゼロ */
 }
 
-/* 選択中ページ */
-.pagination span[aria-current="page"]>span {
+/* 先頭要素だけ余白リセット */
+.pagination>div>a:first-child,
+.pagination>div>span:first-child {
+    margin-left: 0;
+}
+
+/* 現在ページ */
+.pagination .active {
     background: #82746A;
     color: #fff;
 }
 
-/* SVG の色 */
-.pagination svg {
-    width: 14px;
-    height: 14px;
-    color: #82746A;
-}
-
-/* 前へ・次へ の非表示 */
-.pagination .sm\:hidden span.cursor-not-allowed,
-.pagination .sm\:hidden a[rel="next"] {
-    display: none !important;
-}
-
-/* Showing x to y of z の非表示 */
-.pagination p.text-sm.text-gray-700.leading-5 {
-    display: none;
+/* 非活性（先頭/末尾の＜＞など） */
+.pagination .disabled {
+    opacity: 0.4;
+    pointer-events: none;
 }
 
 /* =========================
@@ -223,15 +221,17 @@ Table
     text-align: center;
 }
 
-/* hover機能 */
+/* hover機能（列ハイライト） */
 .contact-table__inner:has(td:nth-child(1):hover) th:nth-child(1),
 .contact-table__inner:has(td:nth-child(1):hover) td:nth-child(1) {
     background-color: #D9C6B5;
 }
+
 .contact-table__inner:has(td:nth-child(2):hover) th:nth-child(2),
 .contact-table__inner:has(td:nth-child(2):hover) td:nth-child(2) {
     background-color: #D9C6B5;
 }
+
 .contact-table__inner:has(td:nth-child(3):hover) th:nth-child(3),
 .contact-table__inner:has(td:nth-child(3):hover) td:nth-child(3) {
     background-color: #D9C6B5;
@@ -241,11 +241,11 @@ Table
 .contact-table__inner:has(td:nth-child(4):hover) td:nth-child(4) {
     background-color: #D9C6B5;
 }
+
 .contact-table__inner:has(td:nth-child(5):hover) th:nth-child(5),
 .contact-table__inner:has(td:nth-child(5):hover) td:nth-child(5) {
     background-color: #D9C6B5;
 }
-
 
 /* =========================
 Modal
