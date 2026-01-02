@@ -29,7 +29,7 @@
     cp .env.example .env
     ```
 
-4. `.env`ファイルのDB設定及びセッション設定を以下の通り修正
+4. `.env`ファイルのDB設定を以下の通り修正
     ```ini
     # DB設定
     DB_CONNECTION=mysql
