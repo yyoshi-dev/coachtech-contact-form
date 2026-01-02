@@ -22,28 +22,40 @@
         <form action="/search" method="get" class="search-form">
             <div class="search-form__content">
                 <div class="search-form__item">
-                    <input type="text" name="name_or_email" class="search-form__item-input" placeholder="名前やメールアドレスを入力してください">
+                    <input
+                        type="text"
+                        name="name_or_email"
+                        class="search-form__item-input"
+                        value="{{request('name_or_email')}}"
+                        placeholder="名前やメールアドレスを入力してください"
+                    >
                 </div>
                 <div class="search-form__item">
                     <select name="gender" class="search-form__item-select">
                         <option value="" disabled selected>性別</option>
-                        <option value="1">男性</option>
-                        <option value="2">女性</option>
-                        <option value="3">その他</option>
+                        <option value="1" {{request('gender') == '1' ? 'selected' : ''}}>男性</option>
+                        <option value="2" {{request('gender') == '2' ? 'selected' : ''}}>女性</option>
+                        <option value="3" {{request('gender') == '3' ? 'selected' : ''}}>その他</option>
                     </select>
                 </div>
                 <div class="search-form__item">
                     <select name="category_id" class="search-form__item-select">
                         <option value="" disabled selected>お問い合わせの種類</option>
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}">
+                            <option value="{{$category->id}}" {{request('category_id') == $category->id ? 'selected' : ''}}>
                                 {{$category->content}}
                             </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="search-form__item">
-                    <input type="date" name="date" class="search-form__item-input" placeholder="年/月/日">
+                    <input
+                        type="date"
+                        name="date"
+                        class="search-form__item-input"
+                        value="{{request('date')}}"
+                        placeholder="年/月/日"
+                    >
                 </div>
                 <div class="search-form__button">
                     <button class="search-form__button-submit" type="submit">検索</button>

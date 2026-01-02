@@ -45,24 +45,31 @@ Search
     border-radius: 3px;
     background: #F4F4F4;
     color: #82746A;
-    text-align: center;
-
     appearance: none;
+    text-align: center;
     -webkit-appearance: none;
     -moz-appearance: none;
     width: 100%;
-    padding-right: 32px;
 }
 
+/* 名前とメールアドレスの入力箇所 */
 .search-form__item-input[type='text'] {
     width: 300px;
+}
+
+/* placeholderは中央揃えで、入力時は左揃え */
+.search-form__item-input {
+    text-align: left;
+}
+.search-form__item-input::-webkit-input-placeholder {
+    text-align: center;
 }
 
 .search-form__item {
     position: relative;
 }
 
-/* セレクト / 日付入力の ▼ アイコン */
+/* ▼アイコン (select / date 共通) */
 .search-form__item:has(select)::after,
 .search-form__item:has(input[type="date"])::after {
     content: "▼";
@@ -72,6 +79,25 @@ Search
     transform: translateY(-50%);
     color: #9D8D7F;
     pointer-events: none;
+}
+
+/* select専用 */
+.search-form__item-select {
+    padding-right: 30px;
+}
+
+/* date 専用: 右側余白を小さく (▼とクリック領域の整合性) */
+.search-form__item-input[type="date"] {
+    padding-right: 5px;
+}
+
+/* date のカレンダーアイコン (透明化＋右端クリック) */
+.search-form__item-input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    width: 24px;
+    height: 100%;
+    cursor: pointer;
+    margin-left: auto;
 }
 
 .search-form__button {
@@ -108,11 +134,6 @@ Utility
     align-items: center;
 }
 
-/* ページネーションラッパ（位置調整用・必要なら） */
-.admin-pagination {
-    /* 例: text-align: right; など必要ならここに */
-}
-
 .export-form__submit {
     display: inline-block;
     margin: 0;
@@ -128,14 +149,11 @@ Utility
 /* =========================
 Pagination
 ========================= */
-
-/* コンポーネント本体（nav.pagination > div） */
 .pagination>div {
     display: flex;
     align-items: center;
 }
 
-/* ページ番号・＜＞共通スタイル */
 .pagination a,
 .pagination span {
     display: flex;
@@ -150,22 +168,18 @@ Pagination
     font-size: 10px;
     text-decoration: none;
     margin-left: -1px;
-    /* 枠線を重ねて隙間ゼロ */
 }
 
-/* 先頭要素だけ余白リセット */
 .pagination>div>a:first-child,
 .pagination>div>span:first-child {
     margin-left: 0;
 }
 
-/* 現在ページ */
 .pagination .active {
     background: #82746A;
     color: #fff;
 }
 
-/* 非活性（先頭/末尾の＜＞など） */
 .pagination .disabled {
     opacity: 0.4;
     pointer-events: none;
@@ -221,7 +235,7 @@ Table
     text-align: center;
 }
 
-/* hover機能（列ハイライト） */
+/* hover (列ハイライト) */
 .contact-table__inner:has(td:nth-child(1):hover) th:nth-child(1),
 .contact-table__inner:has(td:nth-child(1):hover) td:nth-child(1) {
     background-color: #D9C6B5;
