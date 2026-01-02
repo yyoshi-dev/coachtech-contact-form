@@ -172,6 +172,21 @@ Table
 
 .contact-table__item:last-child {
     border-right: 1px solid #ddd;
+    text-align: center;
+}
+
+.detail-button {
+    display: inline-block;
+    margin: 0;
+    min-width: 50px;
+    padding: 5px 12px;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+    background: #F4F4F4;
+    color: #82746A;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
 }
 
 /* hover機能 */
@@ -192,7 +207,94 @@ Table
 .contact-table__inner:has(td:nth-child(4):hover) td:nth-child(4) {
     background-color: #D9C6B5;
 }
-.contact-table__inner:has(td:nth-child(5):hover) th:nth-child(6),
-.contact-table__inner:has(td:nth-child(5):hover) td:nth-child(6) {
+.contact-table__inner:has(td:nth-child(5):hover) th:nth-child(5),
+.contact-table__inner:has(td:nth-child(5):hover) td:nth-child(5) {
     background-color: #D9C6B5;
+}
+
+
+/* =========================
+Modal
+========================= */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal:target {
+    display: flex;
+}
+
+.modal__content {
+    background: #fff;
+    padding: 50px 30px;
+    width: 650px;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+    position: relative;
+}
+
+.modal__close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(130, 116, 106, 0.5);
+    color: #82746A;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.modal__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.modal__group-title {
+    width: 30%;
+    text-align: left;
+}
+
+.modal__group-content {
+    width: 70%;
+}
+
+.modal__group-title-text {
+    color: #82746A;
+    font-weight: bold;
+}
+
+.modal__group-content-item {
+    color: #82746A;
+    padding: 10px;
+    width: 100%;
+}
+
+.delete-form__button {
+    text-align: center;
+}
+
+.delete-form__button-submit {
+    display: inline-block;
+    margin-top: 40px;
+    min-width: 60px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 1px;
+    background: #BA370D;
+    color: #fff;
+    cursor: pointer;
 }

@@ -22,7 +22,7 @@
         <form action="/search" method="get" class="search-form">
             <div class="search-form__content">
                 <div class="search-form__item">
-                    <input type="text" name="name_or_email" class="search-form__item-input" placeholder="名前やメールアドレスを入力してください"> {{-- 後で修正必須--}}
+                    <input type="text" name="name_or_email" class="search-form__item-input" placeholder="名前やメールアドレスを入力してください">
                 </div>
                 <div class="search-form__item">
                     <select name="gender" class="search-form__item-select">
@@ -43,13 +43,13 @@
                     </select>
                 </div>
                 <div class="search-form__item">
-                    <input type="date" name="date" class="search-form__item-input" placeholder="年/月/日"> {{-- 後で修正必須--}}
+                    <input type="date" name="date" class="search-form__item-input" placeholder="年/月/日">
                 </div>
                 <div class="search-form__button">
                     <button class="search-form__button-submit" type="submit">検索</button>
                 </div>
                 <div class="search-form__button">
-                    <button class="search-form__button-reset" type="reset">リセット</button>
+                    <button class="search-form__button-reset" type="reset" onclick="location.href='/reset'">リセット</button>
                 </div>
             </div>
         </form>
@@ -82,12 +82,93 @@
                     <td class="contact-table__item">{{$contact->email}}</td>
                     <td class="contact-table__item">{{$contact->category->content}}</td>
                     <td class="contact-table__item">
-                        {{-- 詳細ボタンを実装 --}}
+                        <a href="#modal-{{$contact->id}}" class="detail-button">詳細</a>
                     </td>
                 </tr>
             @endforeach
         </table>
     </div>
+
+    {{-- モーダル --}}
+    @foreach ($contacts as $contact)
+        <div id="modal-{{$contact->id}}" class="modal">
+            <div class="modal__content">
+                <a href="#" class="modal__close">×</a>
+                <div class="modal__group">
+                    <div class="modal__group-title">
+                        <span class="modal__group-title-text">お名前</span>
+                    </div>
+                    <div class="modal__group-content">
+                        <span class="modal__group-content-item">{{$contact->full_name}}</span>
+                    </div>
+                </div>
+                <div class="modal__group">
+                    <div class="modal__group-title">
+                        <span class="modal__group-title-text">性別</span>
+                    </div>
+                    <div class="modal__group-content">
+                        <span class="modal__group-content-item">{{$contact->gender_label}}</span>
+                    </div>
+                </div>
+                <div class="modal__group">
+                    <div class="modal__group-title">
+                        <span class="modal__group-title-text">メールアドレス</span>
+                    </div>
+                    <div class="modal__group-content">
+                        <span class="modal__group-content-item">{{$contact->email}}</span>
+                    </div>
+                </div>
+                <div class="modal__group">
+                    <div class="modal__group-title">
+                        <span class="modal__group-title-text">電話番号</span>
+                    </div>
+                    <div class="modal__group-content">
+                        <span class="modal__group-content-item">{{$contact->tel}}</span>
+                    </div>
+                </div>
+                <div class="modal__group">
+                    <div class="modal__group-title">
+                        <span class="modal__group-title-text">住所</span>
+                    </div>
+                    <div class="modal__group-content">
+                        <span class="modal__group-content-item">{{$contact->address}}</span>
+                    </div>
+                </div>
+                <div class="modal__group">
+                    <div class="modal__group-title">
+                        <span class="modal__group-title-text">建物名</span>
+                    </div>
+                    <div class="modal__group-content">
+                        <span class="modal__group-content-item">{{$contact->building}}</span>
+                    </div>
+                </div>
+                <div class="modal__group">
+                    <div class="modal__group-title">
+                        <span class="modal__group-title-text">お問い合わせの種類</span>
+                    </div>
+                    <div class="modal__group-content">
+                        <span class="modal__group-content-item">{{$contact->category->content}}</span>
+                    </div>
+                </div>
+                <div class="modal__group">
+                    <div class="modal__group-title">
+                        <span class="modal__group-title-text">お問い合わせ内容</span>
+                    </div>
+                    <div class="modal__group-content">
+                        <span class="modal__group-content-item">{{$contact->detail}}</span>
+                    </div>
+                </div>
+                <form action="/delete" method="post" class="delete-form">
+                    @csrf
+                    @method('DELETE')
+                    <div class="delete-form__button">
+                        <input type="hidden" name="id" value="{{$contact->id}}">
+                        <button class="delete-form__button-submit" type="submit">削除</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endforeach
 </div>
 
 @endsection
