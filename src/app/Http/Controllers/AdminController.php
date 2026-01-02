@@ -19,27 +19,7 @@ class AdminController extends Controller
     // 検索処理
     public function search(Request $request)
     {
-        $query = Contact::query();
-        // 名前、メールアドレスの検索
-        if ($request->filled('name_or_email')) {
-            $keyword = $request->name_or_email;
-            $query->where(function ($q) use ($keyword) {
-                $q->where('last_name', 'like', "%{$keyword}%")->orWhere('first_name', 'like', "%{$keyword}%")->orWhere('email', 'like', "%{$keyword}%")->orWhereRaw("CONCAT(last_name, first_name) LIKE ?", ["%{$keyword}%"])->orWhereRaw("CONCAT(last_name, ' ', first_name) LIKE ?", ["%{$keyword}%"]);
-            });
-        }
-        // 性別の検索
-        if ($request->filled('gender') && $request->gender !== '0') {
-            $query->where('gender', $request->gender);
-        }
-        // お問い合わせの種類の検索
-        if ($request->filled('category_id')) {
-            $query->where('category_id', $request->category_id);
-        }
-        if ($request->date) {
-            $query->whereDate('created_at', $request->date);
-        }
-        // 日付の検索
-        $contacts = $query->paginate(7)->withQueryString();
+        $contacts = Contact::adminSearch($request)->paginate(7);
         $categories = Category::all();
         return view('admin.index', compact('contacts', 'categories'));
     }
@@ -50,9 +30,32 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    // エクスポート処理
-    public function export(Request $request) {}
+    // CSV用エスケープ処理
+    private function escapeForCsv($value)
+    {
+        $value = $value ?? '';
+        $value = str_replace('"', '""', $value);
+        if (preg_match('/[,"\r\n]/', $value)) {
+            $value = '"' . $value . '"';
+        }
 
+        return $value;
+    }
+    // エクスポート処理
+    public function export(Request $request)
+    {
+        $contacts = Contact::adminSearch($request)->get();
+        $csv = implode(',', Contact::csvHeader()) . "\n";
+        foreach ($contacts as $contact) {
+            $row = array_map(fn($v) => $this->escapeForCsv($v), $contact->toCsvRow());
+            $csv .= implode(',', $row) . "\n";
+        }
+        $csv = "\xEF\xBB\xBF" . $csv;
+
+        return response($csv)
+            ->header('Content-type', 'text/csv; charset=UTF-8')
+            ->header('Content-Disposition', 'attachment; filename="contacts.csv"');
+    }
 
     // 削除処理
     public function destroy(Request $request)

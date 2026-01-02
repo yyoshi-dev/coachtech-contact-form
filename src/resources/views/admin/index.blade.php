@@ -58,6 +58,9 @@
     {{-- エクスポート、ページネーション --}}
     <div class="utilities">
         <form action="/export" method="get" class="export-form">
+            @foreach(request()->query() as $key => $value)
+                <input type="hidden" name="{{$key}}" value="{{$value}}">
+            @endforeach
             <button class="export-form__submit">エクスポート</button>
         </form>
         <div class="pagination">
