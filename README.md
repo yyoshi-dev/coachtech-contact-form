@@ -8,6 +8,11 @@
     git clone git@github.com:yyoshi-dev/coachtech-contact-form.git
     ```
 
+2. ディレクトリに移動
+    ```bash
+    cd coachtech-contact-form
+    ```
+
 3. コンテナを起動
     ```bash
     docker compose up -d --build
