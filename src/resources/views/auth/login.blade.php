@@ -5,8 +5,8 @@
 @endsection
 
 @section('header-nav')
-<div class="register__link">
-    <a href="/register" class="register__button-submit">register</a>
+<div class="register__switch">
+    <a href="/register" class="register__switch-button">register</a>
 </div>
 @endsection
 

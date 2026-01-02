@@ -1,3 +1,6 @@
+/* フォントのインポート */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap');
+
 .thanks {
     position: relative;
     min-height: 100vh;
@@ -12,9 +15,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: Georgia;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
     font-size: 20vw;
-    color: rgba(0, 0, 0, 0.05);
+    color: var(--color-main);
+    opacity: 0.08;
     white-space: nowrap;
 }
 
@@ -27,18 +31,19 @@
 }
 
 .thanks__message {
-    padding: 20px;
-    color: #9D8D7F;
+    padding: 30px;
+    color: var(--color-main);
     font-weight: bold;
-    font-size: 24px;
+    font-size: 25px;
 }
 
 .thanks__button {
-    padding: 5px 30px;
-    background: #82746A;
-    color: #FFFFFF;
+    padding: 10px 30px;
+    background: var(--color-main);
+    color: #fff;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     text-decoration: none;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
 }

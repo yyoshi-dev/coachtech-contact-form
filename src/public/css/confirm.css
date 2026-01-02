@@ -3,8 +3,8 @@ Layout
 ========================= */
 .content {
     margin: 0 auto;
-    padding: 15px 15px;
     max-width: 1230px;
+    padding: 20px 15px 80px;
 }
 
 .form {
@@ -24,23 +24,23 @@ Table
 
 .confirm-table__header {
     padding: 20px 40px;
-    width: 30%;
-    border: 1px solid #ddd;
-    background: #9D8D7F;
-    color: #FFFFFF;
+    border: 1px solid var(--color-border);
+    background: var(--color-sub);
+    color: #fff;
     text-align: left;
     font-size: 15px;
+    white-space: nowrap;
 }
 
 .confirm-table__text {
     padding: 15px 40px;
-    width: 70%;
-    border: 1px solid #ddd;
-    color: #9D8D7F;
+    border: 1px solid var(--color-border);
+    color: var(--color-main);
     text-align: left;
     font-size: 15px;
 }
 
+/* 姓名の間のスペースを広くする為 */
 .last-name {
     margin-right: 16px;
 }
@@ -58,18 +58,19 @@ Button
 
 .form__button-submit {
     padding: 5px 30px;
-    background: #82746A;
-    color: #FFFFFF;
+    background: var(--color-main);
+    color: #fff;
     border: none;
-    border-radius: 3px;
+    border-radius: 1px;
     cursor: pointer;
 }
 
 .form__button-correct {
     padding: 5px 0px;
-    background-color: #FFFFFF;
-    color: #82746A;
+    background-color: #fff;
+    color: var(--color-main);
     border: none;
     cursor: pointer;
     text-decoration: underline;
 }
+

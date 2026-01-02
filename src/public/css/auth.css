@@ -5,14 +5,14 @@ Header, Title
     background: #F1ECE6;
 }
 
-.register__button-submit,
-.login__button-submit {
+.register__switch-button,
+.login__switch-button {
     text-decoration: none;
     border: 1px solid #9d8d7f62;
-    border-radius: 3px;
-    background: #F4F4F4;
-    color: #9D8D7F;
-    padding: 1px 20px;
+    border-radius: 1px;
+    background: var(--color-bg-light);
+    color: var(--color-sub);
+    padding: 3px 20px;
     font-size: 14px;
 }
 
@@ -32,7 +32,7 @@ Layout
     width: 100%;
     max-width: 500px;
     text-align: left;
-    background: #FFFFFF;
+    background: #fff;
     border: 1px solid #9d8d7f62;
     border-radius: 3px;
 }
@@ -56,13 +56,13 @@ Form Group
 }
 
 .form__label-item {
-    color: #9D8D7F;
-    font-weight: bold;
+    color: var(--color-main);
+    font-size: 18px;
 }
 
 .form__input--text input {
-    background: #F4F4F4;
-    color: #9D8D7F;
+    background: var(--color-bg-light);
+    color: var(--color-main);
     padding: 12px;
     width: 100%;
     border: none;
@@ -75,7 +75,7 @@ Error Message
 .form__error {
     margin-top: 4px;
     height: auto;
-    color: #ff0000;
+    color: var(--color-error);
     text-align: left;
 }
 
@@ -93,7 +93,7 @@ Button
     padding: 8px 24px;
     border: none;
     border-radius: 1px;
-    background: #82746A;
+    background: var(--color-main);
     color: #fff;
     cursor: pointer;
 }
