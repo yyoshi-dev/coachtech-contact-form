@@ -32,23 +32,48 @@ Search
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
+    flex-wrap: nowrap;
 }
 
 .search-form__item-input,
 .search-form__item-select {
-    padding: 8px 12px;
+    padding: 10px 12px;
     margin: 0;
     border: 1px solid #ddd;
     border-radius: 3px;
     background: #F4F4F4;
     color: #82746A;
     text-align: center;
-    font-size: 10px;
 }
 
-.search-form__item-input {}
+.search-form__item-input[type='text'] {
+    width: 300px;
+}
 
-.search-form__item-select {}
+.search-form__item {
+    position: relative;
+}
+
+.search-form__item:has(select)::after,
+.search-form__item:has(input[type="date"])::after {
+    content: "▼";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9D8D7F;
+    pointer-events: none;
+}
+
+.search-form__item-input,
+.search-form__item-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding-right: 32px;
+}
 
 .search-form__button {
     text-align: center;
@@ -99,44 +124,53 @@ Utility
 }
 
 
-/* 全体を横並び・中央寄せにする */
+/* ページネーション全体を横並びに */
 .pagination nav>div:last-child {
     display: flex;
     align-items: center;
     gap: 6px;
 }
-/* ページ番号の見た目をシンプルにする */
+
+/* 通常のページ番号 */
 .pagination a,
-.pagination span[aria-current="page"]>span {
+.pagination span[aria-current="page"]>span,
+.pagination span[aria-disabled="true"]>span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 28px;
+    height: 28px;
     border: 1px solid #ccc;
-    padding: 6px 10px;
     border-radius: 1px;
+    padding: 0 6px;
     background: #fff;
     color: #82746A;
     font-size: 10px;
     text-decoration: none;
 }
+
+/* 選択中ページ */
 .pagination span[aria-current="page"]>span {
     background: #82746A;
-    color: #FFFFFF;
+    color: #fff;
 }
-/* SVG の色を統一 */
+
+/* SVG の色 */
 .pagination svg {
     width: 14px;
     height: 14px;
     color: #82746A;
 }
-/* Showing XXX削除 */
-.pagination p.text-sm.text-gray-700.leading-5 {
-    display: none;
-}
-/* Previous削除 */
-.pagination .sm\:hidden span.cursor-not-allowed {
-    display: none !important;
-}
-/* Next削除 */
+
+/* 前へ・次へ の非表示 */
+.pagination .sm\:hidden span.cursor-not-allowed,
 .pagination .sm\:hidden a[rel="next"] {
     display: none !important;
+}
+
+/* Showing x to y of z の非表示 */
+.pagination p.text-sm.text-gray-700.leading-5 {
+    display: none;
 }
 
 /* =========================
