@@ -8,7 +8,7 @@
 <div class="logout__link">
 	<form action="/logout" method="POST" class="logout-form">
         @csrf
-        <button class="logout-form__button">ログアウト</button>
+        <button class="logout-form__button">logout</button>
 	</form>
 </div>
 @endsection

@@ -194,6 +194,7 @@ Textarea
 ========================= */
 .form__input--textarea textarea {
     height: 120px;
+    resize: none;
 }
 
 .form__group--textarea {
