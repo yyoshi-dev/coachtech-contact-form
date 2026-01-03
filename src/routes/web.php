@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
@@ -15,3 +16,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/delete', [AdminController::class, 'destroy']);
     Route::get('/export', [AdminController::class, 'export']);
 });
+
+// ログイン済みで/loginに来たら/adminへ
+Route::get('/login', function () {
+    if (Auth::check()) {
+        return redirect('/admin');
+    }
+    return view('auth.login');
+})->name('login');
+// ログイン済みで/registerに来たら/adminへ
+Route::get('/register', function () {
+    if (Auth::check()) {
+        return redirect('/admin');
+    }
+    return view('auth.register');
+})->name('register');
