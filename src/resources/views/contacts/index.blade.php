@@ -34,6 +34,7 @@
                 </div>
             </div>
         </div>
+
         {{-- 性別 --}}
         <div class="form__group">
             <div class="form__group-title">
@@ -66,6 +67,7 @@
                 @enderror
             </div>
         </div>
+
         {{-- メールアドレス --}}
         <div class="form__group">
             <div class="form__group-title">
@@ -81,6 +83,7 @@
                 </div>
             </div>
         </div>
+
         {{-- 電話番号 --}}
         <div class="form__group">
             <div class="form__group-title">
@@ -110,6 +113,7 @@
                 </div>
             </div>
         </div>
+
         {{-- 住所 --}}
         <div class="form__group">
             <div class="form__group-title">
@@ -125,6 +129,7 @@
                 </div>
             </div>
         </div>
+
         {{-- 建物名 --}}
         <div class="form__group">
             <div class="form__group-title">
@@ -140,6 +145,7 @@
                 </div>
             </div>
         </div>
+
         {{-- お問い合わせの種類 --}}
         <div class="form__group">
             <div class="form__group-title">
@@ -162,6 +168,7 @@
                 @enderror
             </div>
         </div>
+
         {{-- お問い合わせ内容 --}}
         <div class="form__group form__group--textarea">
             <div class="form__group-title">
@@ -177,6 +184,7 @@
                 </div>
             </div>
         </div>
+
         {{-- 確認画面ボタン --}}
         <div class="form__button">
             <button class="form__button-submit" type="submit">確認画面</button>

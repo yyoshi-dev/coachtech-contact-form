@@ -18,9 +18,8 @@
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お名前</th>
                     <td class="confirm-table__text">
-                        {{-- {{$contact['full_name']}} --}}
-                        <span class="last-name">{{$contact['last_name']}}</span>
-                        <span class="first-name">{{$contact['first_name']}}</span>
+                        <span class="confirm-table__last-name">{{$contact['last_name']}}</span>
+                        <span class="confirm-table__first-name">{{$contact['first_name']}}</span>
                         <input type="hidden" name="last_name" value="{{$contact['last_name']}}">
                         <input type="hidden" name="first_name" value="{{$contact['first_name']}}">
                     </td>

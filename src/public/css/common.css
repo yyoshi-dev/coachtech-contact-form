@@ -32,7 +32,7 @@
     color: var(--color-main);
     text-decoration: none;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 30px;
     font-family: 'Playfair Display', 'Times New Roman', serif;
 }
 
@@ -42,9 +42,10 @@
     max-width: 1230px;
 }
 
-.page-title__header{
+.page-title__heading{
     color: var(--color-main);
     text-align: center;
     font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 26px;
     margin: 5px 10px;
 }

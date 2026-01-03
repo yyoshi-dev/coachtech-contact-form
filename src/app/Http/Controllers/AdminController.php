@@ -13,6 +13,7 @@ class AdminController extends Controller
     {
         $contacts = Contact::with('category')->paginate(7);
         $categories = Category::all();
+
         return view('admin.index', compact('contacts', 'categories'));
     }
 
@@ -24,6 +25,7 @@ class AdminController extends Controller
         }
         $contacts = Contact::adminSearch($request)->paginate(7)->withQueryString();
         $categories = Category::all();
+
         return view('admin.index', compact('contacts', 'categories'));
     }
 
@@ -67,6 +69,7 @@ class AdminController extends Controller
         if ($contact) {
             $contact->delete();
         }
+
         return redirect('/admin');
     }
 }

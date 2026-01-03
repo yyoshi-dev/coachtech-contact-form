@@ -19,6 +19,7 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @param  array<string, string>  $input
      */
+    // 会員登録時のバリデーションに関する設定
     public function create(array $input): User
     {
         $form = new RegisterRequest();
@@ -29,6 +30,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($validated['password'])
         ]);
         Auth::login($user);
+
         return $user;
 
         // Validator::make($input, [

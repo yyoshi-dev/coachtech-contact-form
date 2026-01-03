@@ -86,6 +86,7 @@ class Contact extends Model
             'お問い合わせ内容'
         ];
     }
+
     // CSV出力
     public function toCsvRow()
     {

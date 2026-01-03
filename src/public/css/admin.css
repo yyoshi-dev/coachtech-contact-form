@@ -241,7 +241,7 @@ Table
     text-align: center;
 }
 
-.detail-button {
+.contact-table__detail-button {
     display: inline-block;
     margin: 0;
     min-width: 50px;

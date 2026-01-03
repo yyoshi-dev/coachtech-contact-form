@@ -13,9 +13,6 @@ Color Variables（全ページ共通の色）
 /* =========================
 Typography (フォント)
 ========================= */
-/* フォントのインポート */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap');
-
 body {
     font-family: 'Noto Sans JP',
         'Hiragino Kaku Gothic ProN',

@@ -1,4 +1,5 @@
 # 環境変数
 .env
+
 # MySQL data directory
 docker/mysql/data/

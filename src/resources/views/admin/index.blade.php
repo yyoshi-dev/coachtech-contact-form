@@ -5,7 +5,7 @@
 @endsection
 
 @section('header-nav')
-<div class="logout__link">
+<div class="logout__button">
 	<form action="/logout" method="POST" class="logout-form">
         @csrf
         <button class="logout-form__button">logout</button>
@@ -21,6 +21,7 @@
     <div class="search">
         <form action="/search" method="get" class="search-form">
             <div class="search-form__content">
+                {{-- 名前 or メールアドレス --}}
                 <div class="search-form__item">
                     <input
                         type="text"
@@ -30,6 +31,8 @@
                         placeholder="名前やメールアドレスを入力してください"
                     >
                 </div>
+
+                {{-- 性別 --}}
                 <div class="search-form__item">
                     <select name="gender" class="search-form__item-select">
                         <option value="">性別</option>
@@ -38,6 +41,8 @@
                         <option value="3" {{request('gender') == '3' ? 'selected' : ''}}>その他</option>
                     </select>
                 </div>
+
+                {{-- お問い合わせの種類 --}}
                 <div class="search-form__item">
                     <select name="category_id" class="search-form__item-select">
                         <option value="">お問い合わせの種類</option>
@@ -48,6 +53,8 @@
                         @endforeach
                     </select>
                 </div>
+
+                {{-- 日付 --}}
                 <div class="search-form__item">
                     <input
                         type="date"
@@ -57,6 +64,8 @@
                         placeholder="年/月/日"
                     >
                 </div>
+
+                {{-- 検索及びリセットボタン --}}
                 <div class="search-form__button">
                     <button class="search-form__button-submit" type="submit">検索</button>
                 </div>
@@ -69,12 +78,15 @@
 
     {{-- エクスポート、ページネーション --}}
     <div class="utilities">
+        {{-- エクスポート --}}
         <form action="/export" method="get" class="export-form">
             @foreach(request()->query() as $key => $value)
                 <input type="hidden" name="{{$key}}" value="{{$value}}">
             @endforeach
             <button class="export-form__submit">エクスポート</button>
         </form>
+
+        {{-- ページネーション --}}
         <div class="admin-pagination">
             {{$contacts->links('vendor.pagination.tailwind')}}
         </div>
@@ -97,7 +109,7 @@
                     <td class="contact-table__item">{{$contact->email}}</td>
                     <td class="contact-table__item">{{$contact->category->content}}</td>
                     <td class="contact-table__item">
-                        <a href="#modal-{{$contact->id}}" class="detail-button">詳細</a>
+                        <a href="#modal-{{$contact->id}}" class="contact-table__detail-button">詳細</a>
                     </td>
                 </tr>
             @endforeach
@@ -108,7 +120,10 @@
     @foreach ($contacts as $contact)
         <div id="modal-{{$contact->id}}" class="modal">
             <div class="modal__content">
+                {{-- 閉じるボタン --}}
                 <a href="#" class="modal__close">×</a>
+
+                {{-- お名前 --}}
                 <div class="modal__group">
                     <div class="modal__group-title">
                         <span class="modal__group-title-text">お名前</span>
@@ -117,6 +132,8 @@
                         <span class="modal__group-content-item">{{$contact->full_name}}</span>
                     </div>
                 </div>
+
+                {{-- 性別 --}}
                 <div class="modal__group">
                     <div class="modal__group-title">
                         <span class="modal__group-title-text">性別</span>
@@ -125,6 +142,8 @@
                         <span class="modal__group-content-item">{{$contact->gender_label}}</span>
                     </div>
                 </div>
+
+                {{-- メールアドレス --}}
                 <div class="modal__group">
                     <div class="modal__group-title">
                         <span class="modal__group-title-text">メールアドレス</span>
@@ -133,6 +152,8 @@
                         <span class="modal__group-content-item">{{$contact->email}}</span>
                     </div>
                 </div>
+
+                {{-- 電話番号 --}}
                 <div class="modal__group">
                     <div class="modal__group-title">
                         <span class="modal__group-title-text">電話番号</span>
@@ -141,6 +162,8 @@
                         <span class="modal__group-content-item">{{$contact->tel}}</span>
                     </div>
                 </div>
+
+                {{-- 住所 --}}
                 <div class="modal__group">
                     <div class="modal__group-title">
                         <span class="modal__group-title-text">住所</span>
@@ -149,6 +172,8 @@
                         <span class="modal__group-content-item">{{$contact->address}}</span>
                     </div>
                 </div>
+
+                {{-- 建物名 --}}
                 <div class="modal__group">
                     <div class="modal__group-title">
                         <span class="modal__group-title-text">建物名</span>
@@ -157,6 +182,8 @@
                         <span class="modal__group-content-item">{{$contact->building}}</span>
                     </div>
                 </div>
+
+                {{-- お問い合わせの種類 --}}
                 <div class="modal__group">
                     <div class="modal__group-title">
                         <span class="modal__group-title-text">お問い合わせの種類</span>
@@ -165,6 +192,8 @@
                         <span class="modal__group-content-item">{{$contact->category->content}}</span>
                     </div>
                 </div>
+
+                {{-- お問い合わせ内容 --}}
                 <div class="modal__group">
                     <div class="modal__group-title">
                         <span class="modal__group-title-text">お問い合わせ内容</span>
@@ -173,6 +202,8 @@
                         <span class="modal__group-content-item">{{$contact->detail}}</span>
                     </div>
                 </div>
+
+                {{-- 削除ボタン --}}
                 <form action="/delete" method="post" class="delete-form">
                     @csrf
                     @method('DELETE')

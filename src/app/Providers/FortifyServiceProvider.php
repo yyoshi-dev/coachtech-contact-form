@@ -27,6 +27,7 @@ class FortifyServiceProvider extends ServiceProvider
     {
         // FortifyのLoginRequestを自作のものに置き換え
         $this->app->bind(FortifyLoginRequest::class, AppLoginRequest::class);
+
         // Logout処理時に"/login"にリダイレクトする設定に置き換え
         $this->app->singleton(LogoutResponseContract::class, LogoutResponse::class);
     }

@@ -41,7 +41,7 @@ Table
 }
 
 /* 姓名の間のスペースを広くする為 */
-.last-name {
+.confirm-table__last-name {
     margin-right: 16px;
 }
 

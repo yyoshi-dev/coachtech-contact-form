@@ -13,6 +13,7 @@ class ContactController extends Controller
     public function index()
     {
         $categories = Category::all();
+
         return view('contacts.index', compact('categories'));
     }
 
@@ -44,7 +45,7 @@ class ContactController extends Controller
         return view('contacts.confirm', compact('contact'));
     }
 
-    // サンクスページ
+    // お問い合わせフォームサンクスページ
     public function store(Request $request)
     {
         $contact = $request->only([

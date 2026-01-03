@@ -14,7 +14,7 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <div class="header__left"></div>
+            <div class="header__left"></div> {{-- ロゴの左右バランス調整用 --}}
             <div class="header__center">
                 <a href="/" class="header__logo">FashionablyLate</a>
             </div>
@@ -26,10 +26,9 @@
 
     <main>
         <div class="page-title">
-            <h2 class="page-title__header">@yield('title')</h2>
+            <h1 class="page-title__heading">@yield('title')</h1>
         </div>
         @yield('content')
     </main>
 </body>
-
 </html>

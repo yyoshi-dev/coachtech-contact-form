@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // contactsのダミーデータの作成
         Contact::factory(35)->create();
 
-        // usersに関してはダミーデータの作成は要件に含まれていない
+        // usersに関してはダミーデータの作成は要件に含まれていない為コメントアウト
         // User::factory(10)->create();
         // User::factory()->create([
         //     'name' => 'Test User',
