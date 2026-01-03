@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
-Route::post('/thanks', [ContactController::class, 'store']);
+Route::post('/thanks', [ContactController::class, 'store']); // 保存用の処理
+Route::get('/thanks', fn() => view('contacts.thanks')); //表示用 (リダイレクト時の処理)
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);

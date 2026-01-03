@@ -59,6 +59,8 @@ class ContactController extends Controller
             'detail'
         ]);
         Contact::create($contact);
-        return view('contacts.thanks');
+
+        // return view('contacts.thanks');
+        return redirect('/thanks');
     }
 }
