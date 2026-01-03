@@ -32,7 +32,7 @@
                 </div>
                 <div class="search-form__item">
                     <select name="gender" class="search-form__item-select">
-                        <option value="" disabled selected>性別</option>
+                        <option value="">性別</option>
                         <option value="1" {{request('gender') == '1' ? 'selected' : ''}}>男性</option>
                         <option value="2" {{request('gender') == '2' ? 'selected' : ''}}>女性</option>
                         <option value="3" {{request('gender') == '3' ? 'selected' : ''}}>その他</option>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="search-form__item">
                     <select name="category_id" class="search-form__item-select">
-                        <option value="" disabled selected>お問い合わせの種類</option>
+                        <option value="">お問い合わせの種類</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}" {{request('category_id') == $category->id ? 'selected' : ''}}>
                                 {{$category->content}}
