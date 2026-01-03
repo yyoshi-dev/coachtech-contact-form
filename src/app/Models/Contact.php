@@ -57,7 +57,7 @@ class Contact extends Model
             });
         }
         // 性別の検索
-        if ($request->filled('gender') && $request->gender !== '0') {
+        if ($request->filled('gender') && $request->gender !== 'all') {
             $query->where('gender', $request->gender);
         }
         // お問い合わせの種類の検索
